@@ -27,7 +27,6 @@ Book.prototype.addBook = function () {
     newBook.pages = this.pages;
     newBook.status = this.status;
     myLibrary.push(newBook);
-    console.log(myLibrary, 'LIBRARY');
 };
 
 Book.prototype.displayBook = function (book) {
@@ -107,7 +106,6 @@ Book.prototype.displayBook = function (book) {
     buttonDelete.addEventListener('click', deleteBook);
     inputCheck.addEventListener('click', changeStatus);
     index++;
-    console.log(index, 'INDEX');
 };
 
 Book.prototype.saveOnLocal = function () {
@@ -115,13 +113,15 @@ Book.prototype.saveOnLocal = function () {
 };
 
 Book.prototype.getLocal = function () {
-    const string = localStorage.getItem('myBooks');
-    const myBooks = JSON.parse(string);
-    myLibrary = myBooks;
-    container.innerHTML = '';
-    index = 0;
-    for (book of myBooks) {
-        this.displayBook(book);
+    if (localStorage.getItem('myBooks')) {
+        const string = localStorage.getItem('myBooks');
+        const myBooks = JSON.parse(string);
+        myLibrary = myBooks;
+        container.innerHTML = '';
+        index = 0;
+        for (book of myBooks) {
+            this.displayBook(book);
+        }
     }
 };
 
@@ -160,7 +160,6 @@ buttonSubmit.addEventListener('click', (e) => {
         inputPages.value,
         inputStatus.checked
     );
-    console.log(book, 'BOOK');
     book.addBook();
     book.displayBook(book);
     book.saveOnLocal();
