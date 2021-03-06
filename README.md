@@ -1,6 +1,6 @@
 # Virtual Library
 
-### [Live Demo](https://sultanbadri.github.io/virtual-library/)
+### [Live Demo](https://itsjoseantonio.github.io/library/)
 
 #### 📝 Description
 
