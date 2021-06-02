@@ -8,6 +8,7 @@ const inputStatus = document.querySelector('.inputStatus');
 const buttonDelete = document.querySelector('.buttonDelete');
 const buttonSubmit = document.getElementById('buttonSubmit');
 const container = document.querySelector('.container-books');
+const form = document.querySelector('.form');
 
 // MODAL
 const modal = document.querySelector('.modal');
@@ -152,17 +153,56 @@ function windowOnClick(event) {
     }
 }
 
-buttonSubmit.addEventListener('click', (e) => {
+function validateForm() {
+    let valid = false;
+    const inputs = document.querySelectorAll('.input');
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value.trim() === '') {
+            console.log(inputs[i].value, inputs[i]);
+            inputs[i].classList.add('error');
+            valid = false;
+            inputs[i].focus();
+            break;
+        } else {
+            inputs[i].classList.remove('error');
+            valid = true;
+        }
+    }
+    return valid;
+}
+
+function clearForm() {
+    const inputs = document.querySelectorAll('.input');
+    inputs.forEach((item, i) => {
+        item.value = '';
+        if (i === 0) item.focus();
+    });
+}
+
+function onlyNumber(evt) {
+    var iKeyCode = evt.which ? evt.which : evt.keyCode;
+    if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+        return false;
+
+    return true;
+}
+
+form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const book = new Book(
-        inputTitle.value,
-        inputAuthor.value,
-        inputPages.value,
-        inputStatus.checked
-    );
-    book.addBook();
-    book.displayBook(book);
-    book.saveOnLocal();
+    let valid = validateForm();
+    console.log(valid);
+    if (valid) {
+        const book = new Book(
+            inputTitle.value,
+            inputAuthor.value,
+            inputPages.value,
+            inputStatus.checked
+        );
+        book.addBook();
+        book.displayBook(book);
+        book.saveOnLocal();
+        clearForm();
+    }
 });
 
 window.addEventListener('load', function () {

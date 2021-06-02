@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/src/favicon.ico" />
+    <link rel="apple-touch-icon" href="/src/touch-icon.png" />
     <title>Library Store</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
 	<link rel="stylesheet" href="src/main.css">
@@ -27,23 +29,23 @@
 			<form class="ui form">
 				<div class="field">
 					<label>Title</label>
-					<input type="text" name="first-name" placeholder="The Hobbit" class="inputTitle input" required="true" >
+					<input type="text" name="first-name" placeholder="The Hobbit" class="inputTitle input"  >
 				</div>
 				<div class="field">
 					<label>Author</label>
-					<input type="text" name="last-name" placeholder="R. S." class="inputAuthor input" required="true" >
+					<input type="text" name="last-name" placeholder="R. S." class="inputAuthor input"  >
 				</div>
 				<div class="field">
 					<label>Pages</label>
-					<input type="text" name="last-name" placeholder="365" class="inputPages input" required="true" >
+					<input type="text" name="last-name" placeholder="365" class="inputPages input" onkeypress="javascript:return onlyNumber(event)" >
 				</div>
 				<div class="field center aligned">
 					<div class="ui checkbox">
-					<input type="checkbox" id="onRead" class="inputStatus">
-					<label for="onRead">have you read the book?</label>
+						<input type="checkbox" id="onRead" class="inputStatus">
+						<label for="onRead">have you read the book?</label>
 					</div>
 				</div>
-				<button class="ui button" type="submit" class="buttonSubmit" id="buttonSubmit">Submit</button>
+				<button class="ui blue button" type="submit" class="buttonSubmit" id="buttonSubmit">Submit</button>
 			</form>
 		</div>
 	</div>

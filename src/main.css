@@ -12,6 +12,14 @@
     cursor: pointer;
 }
 
+.ui.form .field input.error {
+    border: 1px solid red;
+}
+
+.ui.icon.header .icon {
+    margin-bottom: 1rem;
+}
+
 .form-group label {
     position: relative;
     cursor: pointer;
